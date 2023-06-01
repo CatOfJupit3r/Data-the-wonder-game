@@ -16,7 +16,6 @@ def run():
 
     currentIntents = discord.Intents.default()
     currentIntents.message_content = True
-    currentIntents.members = True
 
     bot = commands.Bot(command_prefix='!', intents=currentIntents)
 
@@ -47,6 +46,7 @@ def run():
         return phrases
 
     @bot.command(name='add')
+    @is_admin()
     async def add_phrase(ctx):
         print('add')
         with open('phrases.json', 'r', encoding='utf-8') as file:
@@ -70,11 +70,14 @@ def run():
 
     @bot.event
     async def on_message(message):
+        # Ignore messages from the bot itself
         if message.author == bot.user:
             return
 
+        # Process commands
         if message.content.startswith('!'):
             await bot.process_commands(message)
+        # Process message timers
         channel_id = message.channel.id
         if channel_id in message_timers:
             message_timers[channel_id] -= 1
@@ -87,12 +90,14 @@ def run():
             result = random.choice(phrases)
             await channel.send(result)
             message_timers[channel_id] = get_random_timer()  # Reset the timer
-            logger.info(f'Фраза отправлена. Вызвал: {message.author}. Канал: {message.channel}. Следующее сообщение через: {message_timers[channel_id]}. Фраза: {result}.')
+            logger.info(f'Phrase has been sent. Invoked by: {message.author}. Channel: {message.channel.id}. Next message in: {message_timers[channel_id]} messages. Phrase: {result}.')
 
     def get_random_timer():
         # Generate a random time between 30 messages and 256 messages
         return random.randint(30, 256)
 
+    bot.remove_command('help')
+    await bot.change_presence(activity=discord.Game("with your mom"))
     bot.run(settings.DISCORD_TOKEN, root_logger=True)
 
 
