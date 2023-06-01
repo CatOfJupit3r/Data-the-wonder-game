@@ -14,4 +14,4 @@ I am not responsible for any problems that may occur during usage of bot, I am j
 All phrases are completely random and are not related to any real people, organizations or event that have occurred or may occur...
 I am in no way associated with the phrases used by this bot
 
-![interesting-fact-fast-is-woman.gif](other/american-psycho-smoke.gif)
+![interesting-fact-fast-is-woman.gif](other/american-psycho-smoke_wide.gif)
