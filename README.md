@@ -8,7 +8,7 @@ DISCORD_API_TOKEN='*your token*'
 ADMIN_ID='*your id*'
 ```
 
-I AM NOT THE CREATOR OF THE WONDER GAME, I AM JUST A DEVELOPER OF THE BOT AND HIS DEAR FRIEND.
+I AM NOT THE CREATOR OF THE WONDER GAME, BUT I AM HIS FRIEND AND HE GAVE PERMISSION TO USE THE NAME.
 
 I am not responsible for any problems that may occur during usage of bot, I am just a man who loves to create cool stuff.
 All phrases are completely random and are not related to any real people, organizations or event that have occurred or may occur...
