@@ -1,5 +1,5 @@
 # Data from The Wonder Game
-This repository contains a discord bot that I developed at the request of a dear friend of mine, who is also the creator of The Wonder Game.
+This repository contains a discord bot that I developed at the request of a dear friend of mine, who is also the creator of [The Wonder Game](https://gamejolt.com/games/thewondergame/775832).
 If you want to use this repository, you need to have a discord bot token, which you can get from the [Discord Developer Portal](https://discord.com/developers/applications).
 You also need to install requirements.txt, as well as create a file called .env, which will contain the following:
 
