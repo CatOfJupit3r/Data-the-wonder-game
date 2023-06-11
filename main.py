@@ -14,7 +14,7 @@ def run():
     with open('Data_wordlist.txt', 'r', encoding='utf-8') as file:
         phrases = file.read().split('\n')
 
-    currentIntents = discord.Intents.default()
+    currentIntents = discord.Intents.all()
     currentIntents.message_content = True
 
     bot = commands.Bot(command_prefix='!', intents=currentIntents)
@@ -57,6 +57,7 @@ def run():
 
     @bot.event
     async def on_ready():
+        await bot.change_presence(activity=discord.Game("with your mom"))
         print(f'{bot.user} has connected to Discord!')
 
     @bot.command(name='send')
@@ -82,7 +83,7 @@ def run():
         if channel_id in message_timers:
             message_timers[channel_id] -= 1
         else:
-            message_timers[channel_id] = get_random_timer  # Initial timer value in minutes
+            message_timers[channel_id] = get_random_timer()  # Initial timer value in minutes
 
         # Send a message if the timer has reached 0
         if message_timers[channel_id] <= 0:
@@ -93,14 +94,12 @@ def run():
             logger.info(f'Phrase has been sent. Invoked by: {message.author}. Channel: {message.channel.id}. Next message in: {message_timers[channel_id]} messages. Phrase: {result}.')
 
     def get_random_timer():
-        # Generate a random time between 30 messages and 256 messages
-        return random.randint(30, 256)
+        # Generate a random time between 30 messages and 100 messages
+        return random.randint(20, 50)
 
     bot.remove_command('help')
-    await bot.change_presence(activity=discord.Game("with your mom"))
     bot.run(settings.DISCORD_TOKEN, root_logger=True)
 
 
 if __name__ == '__main__':
-    dotenv.load_dotenv()
     run()
